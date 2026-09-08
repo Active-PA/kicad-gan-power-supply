@@ -1,0 +1,26 @@
+#VRML V2.0 utf8
+
+# Yellow insulation-tape winding for the EE50_6p6p_Custom model.
+# KiCad interprets one VRML unit as 2.54 mm.
+Transform {
+  translation 0 0 7.677165
+  children [
+    Shape {
+      appearance Appearance {
+        material Material {
+          diffuseColor 1.000 0.650 0.020
+          ambientIntensity 0.35
+          specularColor 0.180 0.120 0.020
+          shininess 0.12
+        }
+      }
+      geometry Cylinder {
+        radius 3.740157
+        height 6.889764
+        side TRUE
+        top TRUE
+        bottom TRUE
+      }
+    }
+  ]
+}

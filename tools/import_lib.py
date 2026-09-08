@@ -214,7 +214,7 @@ def handle_file(f: Path):
 # ---------------------------------------------------------------------------
 
 def main():
-    print("📥 SamacSys/Mouser Importer")
+    print("SamacSys/Mouser Importer")
     print(f"Projekt   : {PROJECT_ROOT}")
     print(f"Importordner: {IMPORT_INBOX}")
 
@@ -236,7 +236,7 @@ def main():
     # 3D-Pfade in allen Footprints korrigieren
     fix_3d_paths_in_footprints()
 
-    print("✅ Fertig! Symbole in SamacSys_Parts.kicad_sym, Footprints in SamacSys_Parts.pretty, 3D in libs/3d.")
+    print("Fertig! Symbole in SamacSys_Parts.kicad_sym, Footprints in SamacSys_Parts.pretty, 3D in libs/3d.")
 
 
 if __name__ == "__main__":

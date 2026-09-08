@@ -1,0 +1,88 @@
+(kicad_sch
+	(version 20250114)
+	(generator "eeschema")
+	(generator_version "9.0")
+	(uuid "b85b9f74-a891-4c6a-a7d9-bcea53617e6d")
+	(paper "A4")
+	(lib_symbols)
+	(sheet
+		(at 233.68 27.94)
+		(size 34.29 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "d0d94478-d1c1-429c-a2a2-73cd25a3dcce")
+		(property "Sheetname" "HV-Main"
+			(at 233.68 27.2284 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Sheets/HV-Main.kicad_sch"
+			(at 233.68 43.7646 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left top)
+			)
+		)
+		(instances
+			(project "kicad_vorlage"
+				(path "/b85b9f74-a891-4c6a-a7d9-bcea53617e6d"
+					(page "2")
+				)
+			)
+		)
+	)
+	(sheet
+		(at 233.68 48.26)
+		(size 33.02 15.24)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(stroke
+			(width 0.1524)
+			(type solid)
+		)
+		(fill
+			(color 0 0 0 0.0000)
+		)
+		(uuid "04c05df7-4e3c-4d58-aa5d-0ebc13851903")
+		(property "Sheetname" "LV-Main"
+			(at 233.68 47.5484 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left bottom)
+			)
+		)
+		(property "Sheetfile" "Sheets/LV-Main.kicad_sch"
+			(at 233.68 64.0846 0)
+			(effects
+				(font (size 1.27 1.27))
+				(justify left top)
+			)
+		)
+		(instances
+			(project "kicad_vorlage"
+				(path "/b85b9f74-a891-4c6a-a7d9-bcea53617e6d"
+					(page "3")
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/" (page "1"))
+	)
+	(embedded_fonts no)
+)

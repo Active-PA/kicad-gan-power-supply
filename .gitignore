@@ -1,0 +1,19 @@
+# KiCad local state, caches and generated outputs
+*-backups/
+*.kicad_prl
+*.kicad_sch.lck
+*.kicad_pcb.lck
+~*.lck
+fp-info-cache
+_autosave-*
+
+# Importer scratch files
+_tmp_*
+
+# Common fabrication output folders
+gerbers/
+manufacturing/
+
+# Python cache
+__pycache__/
+*.py[cod]

@@ -132,6 +132,58 @@ def copy_if_new(src: Path, dst_dir: Path, kind: str):
         print(f"    (+) {kind} -> {dst.name}")
 
 MODEL_RE = re.compile(r'\(model\s+("?)([^"\s)]+\.(?:stp|step))\1', re.IGNORECASE)
+FOOTPRINT_PROPERTY_RE = re.compile(
+    r'(\(property\s+"Footprint"\s+")([^"]*)(")',
+    re.IGNORECASE,
+)
+
+def normalize_symbol_footprints():
+    """Verknuepft Symbole mit Footprints aus der lokalen Projektbibliothek.
+
+    SamacSys-Dateien enthalten im Footprint-Feld haeufig nur den Dateinamen.
+    KiCad erwartet dort jedoch ``Bibliotheksname:Footprintname``. Diese
+    Normalisierung wird auch auf bereits importierte Symbole angewendet.
+    """
+    if not MASTER_SYM_LIB.exists():
+        return
+
+    available = {fp.stem for fp in MASTER_FP_DIR.glob("*.kicad_mod")}
+    if not available:
+        return
+
+    text = MASTER_SYM_LIB.read_text(encoding="utf-8")
+    changed = []
+
+    def normalize_block(block: str):
+        symbol_match = SYMBOL_NAME_RE.search(block)
+        property_match = FOOTPRINT_PROPERTY_RE.search(block)
+        if not symbol_match or not property_match:
+            return block
+
+        symbol_name = symbol_match.group(1)
+        current = property_match.group(2)
+        candidate = current.rsplit(":", 1)[-1] if current else symbol_name
+        if candidate not in available:
+            return block
+
+        desired = f"SamacSys_Parts:{candidate}"
+        if current == desired:
+            return block
+
+        changed.append((symbol_name, desired))
+        start, end = property_match.span(2)
+        return block[:start] + desired + block[end:]
+
+    blocks = extract_symbol_blocks(text)
+    for block in blocks:
+        normalized = normalize_block(block)
+        if normalized != block:
+            text = text.replace(block, normalized, 1)
+
+    if changed:
+        MASTER_SYM_LIB.write_text(text, encoding="utf-8")
+        for symbol_name, footprint in changed:
+            print(f"    (FP) {symbol_name} -> {footprint}")
 
 def fix_3d_paths_in_footprints():
     """Setzt 3D-Modellpfade relativ zum Projekt, damit das Repo portabel bleibt."""
@@ -235,6 +287,9 @@ def main():
 
     # 3D-Pfade in allen Footprints korrigieren
     fix_3d_paths_in_footprints()
+
+    # Footprint-Felder in Symbolen auf die lokale Bibliothek qualifizieren
+    normalize_symbol_footprints()
 
     print("Fertig! Symbole in SamacSys_Parts.kicad_sym, Footprints in SamacSys_Parts.pretty, 3D in libs/3d.")
 

@@ -38,4 +38,5 @@
   (pad 11 smd rect (at 0.000 8.525 90) (size 2.200 8.800) (layers F.Cu F.Paste F.Mask))
   (pad 12 smd rect (at -1.100 10.2 90) (size 1.150 6.600) (layers F.Cu F.Paste F.Mask))
   (pad 13 smd rect (at -1.200 10.925 90) (size 0.300 6.800) (layers F.Cu F.Paste F.Mask))
+  (model "${KIPRJMOD}/libs/3d/IGT65R055D2_PG-HSOF-8-1.step" (offset (xyz 0 6.0875 0)) (scale (xyz 1 1 1)) (rotate (xyz 0 0 270)))
 )

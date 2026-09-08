@@ -10,7 +10,7 @@ import tempfile
 # ---------------------------------------------------------------------------
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
-IMPORT_INBOX = Path.home() / "Downloads" / "KiCad-Import"
+IMPORT_INBOX = Path.home() / "Downloads"
 
 LIB_ROOT = PROJECT_ROOT / "libs"
 SYM_DIR = LIB_ROOT / "symbols"
@@ -219,8 +219,7 @@ def main():
     print(f"Importordner: {IMPORT_INBOX}")
 
     if not IMPORT_INBOX.exists():
-        IMPORT_INBOX.mkdir(parents=True)
-        print("Importordner wurde angelegt. Dateien dort ablegen und das Tool erneut starten.")
+        print("Kein Downloads-Ordner gefunden, breche ab.")
         return
 
     # ZIP-Dateien im Importordner

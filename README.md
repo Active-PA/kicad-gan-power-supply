@@ -115,11 +115,9 @@ sollte nicht selbst im Submodul bearbeitet werden.
 Das Import-Tool übernimmt KiCad-Symbole, Footprints und STEP-Modelle aus
 SamacSys-/Mouser-Downloads in die lokalen Bibliotheken.
 
-1. `import_lib.bat` einmal starten. Dabei wird
-   `%USERPROFILE%\Downloads\KiCad-Import` angelegt.
-2. Importdateien in diesen Ordner legen. Unterstützt werden ZIP-Archive sowie
-   `.kicad_sym`, `.kicad_mod`, `.step` und `.stp`.
-3. `import_lib.bat` erneut starten.
+1. Importdateien direkt in `%USERPROFILE%\Downloads` legen. Unterstützt werden
+   ZIP-Archive sowie `.kicad_sym`, `.kicad_mod`, `.step` und `.stp`.
+2. `import_lib.bat` starten.
 
 Erfolgreich verarbeitete Quelldateien erhalten die Endung `.imported`.
 ZIP-Dateien ohne unterstützte KiCad-Daten bleiben unverändert. Die Ausgabe ist:
